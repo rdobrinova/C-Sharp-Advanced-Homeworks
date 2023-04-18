@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rozad\\OneDrive\\Desktop\\SEDC Homework\\C# ADVANCED Homework\\Homework01\\SEDC.Class01\\SEDC.Class01.Exercise01\\SEDC.Class01.Exercise01.csproj",
+      "projectUniqueName": "C:\\Users\\rozad\\OneDrive\\Desktop\\Repos\\C-Sharp-Advanced-Homeworks\\Homework01\\SEDC.Class01\\SEDC.Class01.Exercise01\\SEDC.Class01.Exercise01.csproj",
       "projectName": "SEDC.Class01.Exercise01",
-      "projectPath": "C:\\Users\\rozad\\OneDrive\\Desktop\\SEDC Homework\\C# ADVANCED Homework\\Homework01\\SEDC.Class01\\SEDC.Class01.Exercise01\\SEDC.Class01.Exercise01.csproj",
+      "projectPath": "C:\\Users\\rozad\\OneDrive\\Desktop\\Repos\\C-Sharp-Advanced-Homeworks\\Homework01\\SEDC.Class01\\SEDC.Class01.Exercise01\\SEDC.Class01.Exercise01.csproj",
       "packagesPath": "C:\\Users\\rozad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rozad\\OneDrive\\Desktop\\SEDC Homework\\C# ADVANCED Homework\\Homework01\\SEDC.Class01\\SEDC.Class01.Exercise01\\obj\\",
+      "outputPath": "C:\\Users\\rozad\\OneDrive\\Desktop\\Repos\\C-Sharp-Advanced-Homeworks\\Homework01\\SEDC.Class01\\SEDC.Class01.Exercise01\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rozad\\AppData\\Roaming\\NuGet\\NuGet.Config",
