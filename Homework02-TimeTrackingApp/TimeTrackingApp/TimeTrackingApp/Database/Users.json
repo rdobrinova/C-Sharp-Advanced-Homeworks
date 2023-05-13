@@ -1,10 +1,10 @@
 [
   {
-    "FirstName": "Roze",
-    "LastName": "Dobrinova",
+    "FirstName": "Rouzz",
+    "LastName": "Dobrinovaaaa",
     "Age": 21,
     "UserName": "rdobrinova",
-    "Password": "Dobrinova123",
+    "Password": "test12",
     "CompletedActivities": {
       "Working": 0.0896,
       "Running": 0.1463,
@@ -14,5 +14,15 @@
       "Account Management": 0.15
     },
     "Id": 1
+  },
+  {
+    "FirstName": "blagic",
+    "LastName": "koleva",
+    "Age": 20,
+    "UserName": "bkoleva",
+    "Password": "Kolevab90",
+    "CompletedActivities": {
+    },
+    "Id": 2
   }
 ]

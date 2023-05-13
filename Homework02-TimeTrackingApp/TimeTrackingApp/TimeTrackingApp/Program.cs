@@ -49,6 +49,7 @@ try
                 switch (chosenActivity)
                 {
                     case 1:
+                        Console.Clear();
                         Console.WriteLine($"Coutdown for Reading activity is strated.");
                         double timeSpent = 0;
                         var startTime = DateTime.Now;
@@ -67,6 +68,7 @@ try
                         break;
 
                     case 2:
+                        Console.Clear();
                         Console.WriteLine($"Coutdown for Reading activity is strated.");
                         double timeSpent1 = 0;
                         var startTime1 = DateTime.Now;
@@ -84,6 +86,7 @@ try
                         Console.Clear();
                         break;
                     case 3:
+                        Console.Clear();
                         Console.WriteLine($"Coutdown for Reading activity is strated.");
                         double timeSpent2 = 0;
                         var startTime2 = DateTime.Now;
@@ -101,6 +104,7 @@ try
                         Console.Clear();
                         break;
                     case 4:
+                        Console.Clear();
                         Console.WriteLine($"Coutdown for Reading activity is strated.");
                         double timeSpent3 = 0;
                         var startTime3 = DateTime.Now;
@@ -119,7 +123,7 @@ try
                         break;
                     case 5:
                         Console.Clear();
-                        userService.AccountManagementMenu(user);
+                        userService.AccountManagementMenu();
 
                         Thread.Sleep(3000);
                         Console.Clear();

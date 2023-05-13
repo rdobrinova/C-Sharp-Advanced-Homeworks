@@ -7,6 +7,7 @@ namespace TimeTrackingApp.Services
 {
     public class UserService : IUserService
     {
+        public User CurrentUser { get; set; }
         private IUserRepository _userDatabase;
 
         public UserService()
@@ -45,7 +46,7 @@ namespace TimeTrackingApp.Services
                     Console.WriteLine("Login successful!", Console.ForegroundColor);
                     Console.ResetColor();
 
-
+                    CurrentUser = user;
                     return user;
                 }
                 else
@@ -136,23 +137,44 @@ namespace TimeTrackingApp.Services
             Console.WriteLine("1. Belles Lettres");
             Console.WriteLine("2. Fiction");
             Console.WriteLine("3. Professional Literature");
-
-            string choice = Console.ReadLine();
-            string type = "";
-            switch (choice)
+            bool isChosenOptionParsed = int.TryParse(Console.ReadLine(), out int choice);
+            if (isChosenOptionParsed)
             {
-                case "1":
-                    type = "Belles Lettres";
-                    break;
-                case "2":
-                    type = "Fiction";
-                    break;
-                case "3":
-                    type = "Professional Literature";
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
+
+                string type = "";
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("Enter the number of pages you read:");
+                        bool isPagesParsed = int.TryParse(Console.ReadLine(), out int pages);
+                        if (isPagesParsed)
+                        {
+                            type = "Belles Lettres";
+                            Console.WriteLine("You tracked " + pages + " pages of " + type + " reading");
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter the number of pages you read:");
+                        bool isPagesParsed1 = int.TryParse(Console.ReadLine(), out int pages1);
+                        if (isPagesParsed1)
+                        {
+                            type = "Fiction";
+                            Console.WriteLine("You tracked " + pages1 + " pages of " + type + " reading");
+                        }
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter the number of pages you read:");
+                        bool isPagesParsed2 = int.TryParse(Console.ReadLine(), out int pages2);
+                        if (isPagesParsed2)
+                        {
+                            type = "Professional Literature";
+                            Console.WriteLine("You tracked " + pages2 + " pages of " + type + " reading");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
             }
 
         }
@@ -163,24 +185,30 @@ namespace TimeTrackingApp.Services
             Console.WriteLine("1. General");
             Console.WriteLine("2. Running");
             Console.WriteLine("3. Sport");
-            int choice = Convert.ToInt32(Console.ReadLine());
-
-            switch (choice)
+            bool isChosenOptionParsed = int.TryParse(Console.ReadLine(), out int choice);
+            if (isChosenOptionParsed)
             {
-                case 1:
-                    Console.WriteLine("You have tracked a general exercise session.");
-                    break;
-                case 2:
-                    Console.WriteLine("You have tracked a running session.");
-                    break;
-                case 3:
-                    Console.WriteLine("Please enter the name of the sport:");
-                    string sportName = Console.ReadLine();
-                    Console.WriteLine("You have tracked a " + sportName + " session.");
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("Enter the duration of your general exercise in minutes:");
+                        int duration = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("You tracked " + duration + " minutes of general exercise");
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter the distance you ran in kilometers:");
+                        double distance = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("You tracked " + distance + " kilometers of running");
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter the name of the sport you played:");
+                        string sport = Console.ReadLine();
+                        Console.WriteLine("You tracked " + sport + " sport activity"); ;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
             }
         }
         public void TrackWorking()
@@ -188,29 +216,41 @@ namespace TimeTrackingApp.Services
             Console.WriteLine("Please select a type of work:");
             Console.WriteLine("1. At the office");
             Console.WriteLine("2. From home");
-            int choice = Convert.ToInt32(Console.ReadLine());
-
-            switch (choice)
+            bool isChosenParsed = int.TryParse(Console.ReadLine(), out int choice);
+            if (isChosenParsed)
             {
-                case 1:
-                    Console.WriteLine("You have tracked work done at the office.");
-                    break;
-                case 2:
-                    Console.WriteLine("You have tracked work done from home.");
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("Enter duration in minutes:");
+                        int duration = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("You have tracked work done at the office.");
+                        Console.WriteLine($"You spent {duration} minutes working at the office.");
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter duration in minutes:");
+                        int duration1 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("You have tracked work done from home.");
+                        Console.WriteLine($"You spent {duration1} minutes working from home.");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
             }
         }
 
         public void TrackOtherHobbies()
         {
-            Console.WriteLine("Please enter the name of your hobby:");
-            string hobbyName = Console.ReadLine();
-            Console.WriteLine("You have tracked time spent on " + hobbyName + ".");
+            Console.WriteLine("Enter name of hobby:");
+            string hobby = Console.ReadLine();
+
+            Console.WriteLine("Enter duration in minutes:");
+            bool isDurationParsed = int.TryParse(Console.ReadLine(), out int duration);
+
+            Console.WriteLine($"You spent {duration} minutes {hobby}");
         }
-        public User AccountManagementMenu( )
+        public User AccountManagementMenu()
         {
             Console.WriteLine("1) Change password");
             Console.WriteLine("2) Change FirstName");
@@ -223,18 +263,15 @@ namespace TimeTrackingApp.Services
                 {
                     case 1:
                         Console.WriteLine("Your old password: ");
-                        
-                        if (user != null)
+                        string oldPassword = Console.ReadLine();
+
+                        if (CurrentUser != null)
                         {
                             Console.WriteLine("New Password:");
                             string newPassword = Console.ReadLine();
-                            List<User> allUsers = _userDatabase.GetAll();
-                            var tempUser = allUsers.SingleOrDefault(x => x.Id == user.Id);
-                            tempUser.Password = newPassword;
+                            CurrentUser.Password = newPassword;
 
-
-                            _userDatabase.Update(tempUser);
-
+                            _userDatabase.Update(CurrentUser);
 
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Successful change password!");
@@ -249,8 +286,50 @@ namespace TimeTrackingApp.Services
 
                         break;
                     case 2:
+                        Console.WriteLine("Your old FirstName: ");
+                        string oldFirstName = Console.ReadLine();
+
+                        if (CurrentUser != null)
+                        {
+                            Console.WriteLine("New FirstName:");
+                            string newFirstName = Console.ReadLine();
+                            CurrentUser.FirstName = newFirstName;
+
+                            _userDatabase.Update(CurrentUser);
+
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Successful change password!");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Password change unsuccessful. Please try again");
+                            Console.ResetColor();
+                        }
                         break;
                     case 3:
+                        Console.WriteLine("Your old LastName: ");
+                        string oldLastName = Console.ReadLine();
+
+                        if (CurrentUser != null)
+                        {
+                            Console.WriteLine("New LastName:");
+                            string newLastName = Console.ReadLine();
+                            CurrentUser.LastName = newLastName;
+
+                            _userDatabase.Update(CurrentUser);
+
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Successful change password!");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Password change unsuccessful. Please try again");
+                            Console.ResetColor();
+                        }
                         break;
                     default:
                         break;

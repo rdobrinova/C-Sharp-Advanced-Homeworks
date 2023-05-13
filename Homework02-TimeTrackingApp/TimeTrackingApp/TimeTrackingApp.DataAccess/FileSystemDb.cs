@@ -110,7 +110,7 @@ namespace TimeTrackingApp.DataAccess
             {
                 throw new Exception($"Entity does not exist!");
             }
-            
+
             entities[entities.IndexOf(foundEntity)] = entity;
 
             Writer(entities);
