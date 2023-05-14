@@ -16,11 +16,7 @@
         public int Age { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-
-        /// <summary>
-        /// Activity and time spent for that activity
-        /// </summary>
-        public Dictionary<string, decimal> CompletedActivities { get; set; } = new Dictionary<string, decimal>();
+        public List<CompletedActivity> CompletedActivities { get; set; } = new List<CompletedActivity>();
     }
 }
 

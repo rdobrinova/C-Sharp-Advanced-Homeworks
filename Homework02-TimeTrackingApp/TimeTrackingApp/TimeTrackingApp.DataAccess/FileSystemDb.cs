@@ -13,7 +13,7 @@ namespace TimeTrackingApp.DataAccess
         {
             _appPath = @"..\..\..\";
             _directoryPath = _appPath + @"\Database\";
-            _filePath = _directoryPath + @$"{typeof(T).Name}s.json";
+            _filePath = _directoryPath + @$"{typeof(T).Name}Db.json";
 
             if (!Directory.Exists(_directoryPath))
             {

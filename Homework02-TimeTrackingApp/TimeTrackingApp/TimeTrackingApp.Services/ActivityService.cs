@@ -12,8 +12,19 @@ namespace TimeTrackingApp.Services
             _activityDb = new FileSystemDb<Activity>();
         }
 
-        public void AddActivity(Activity activity)
+        public void AddActivity()
         {
+            Activity activity = new Activity();
+
+            Console.WriteLine("Add activity");
+
+            Console.Write("Name: "); 
+            string activityName = Console.ReadLine();
+
+            if(DoesActivityExists(activityName)) throw new Exception($"Activity {activity.Name} already exists!");
+
+            activity.Name = activityName;
+
             _activityDb.Insert(activity);
         }
 
@@ -32,7 +43,13 @@ namespace TimeTrackingApp.Services
             return _activityDb.GetById(id);
         }
 
-        public decimal StartActivity(Activity activity)
+        public bool DoesActivityExists(string name)
+        {
+            Activity activity = _activityDb.GetAll().FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
+            return activity != null;
+        }
+
+        public CompletedActivity StartActivity(Activity activity)
         {
             Diagnostics.Stopwatch sw = new Diagnostics.Stopwatch();
 
@@ -49,7 +66,12 @@ namespace TimeTrackingApp.Services
             sw.Stop();
             Console.WriteLine($"Finished {activity.Name} in {sw.ElapsedMilliseconds}ms");
 
-            return Math.Round((sw.ElapsedMilliseconds / (decimal)1000) / 60, 2);
+            return new CompletedActivity()
+            {
+                ActivityId = activity.Id,
+                Name = activity.Name,
+                TimeSpentInMinutes = Math.Round((sw.ElapsedMilliseconds / (decimal)1000) / 60, 2)
+            };
         }
     }
 }

@@ -19,6 +19,7 @@ namespace TimeTrackingApp.DataAccess
                 throw new Exception("");
             }
             //selectedUser = user
+            selectedUser.CompletedActivities = user.CompletedActivities;
             selectedUser.Password = user.Password;
             selectedUser.FirstName = user.FirstName;
             selectedUser.LastName = user.LastName;

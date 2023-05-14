@@ -8,11 +8,11 @@ namespace TimeTrackingApp.Services
     public class UserService : IUserService
     {
         public User CurrentUser { get; set; }
-        private IUserRepository _userDatabase;
+        private IFileSystemDb<User> _userDatabase;
 
         public UserService()
         {
-            _userDatabase = new UserRepository();
+            _userDatabase = new FileSystemDb<User>();
         }
 
         public User GetUserByUsername(string username)

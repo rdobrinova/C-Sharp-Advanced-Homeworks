@@ -1,0 +1,22 @@
+[
+  {
+    "FirstName": "Roze",
+    "LastName": "Dobrinova",
+    "Age": 20,
+    "UserName": "rdobrinova",
+    "Password": "Dobrinova123",
+    "CompletedActivities": [
+      {
+        "ActivityId": 3,
+        "Name": "Working",
+        "TimeSpentInMinutes": 0.02
+      },
+      {
+        "ActivityId": 4,
+        "Name": "Other Hobbies",
+        "TimeSpentInMinutes": 0.01
+      }
+    ],
+    "Id": 1
+  }
+]
